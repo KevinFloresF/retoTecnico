@@ -1,0 +1,25 @@
+.nofound {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display:flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center center;
+    margin: 0px;
+    color: black;
+}
+
+  h1 {
+    margin: .8em 3rem;
+    font: 4em;
+  }
+  p {
+    display: inline-block;
+    margin: .2em 3rem;
+    font: 2em ;
+  }

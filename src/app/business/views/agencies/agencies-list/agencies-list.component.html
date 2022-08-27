@@ -1,0 +1,45 @@
+
+
+
+<p-virtualScroller [value]="agencies" scrollHeight="500px" [itemSize]="100" >
+	
+    <ng-template pTemplate="header">
+		<app-header></app-header>
+	</ng-template>
+
+	<ng-template let-agencie pTemplate="item" >
+        
+		<div class="product-item">
+            <div><img src="assets/img/agencie1.svg"></div>
+			<div class="product-list-detail">    
+                <label class="agency" style="display: flex;">{{agencie.agencia}}</label>    
+                <label class="province"style="display: flex;">{{agencie.provincia}}</label>
+				<i class="pi pi-map-marker product-category-icon"></i>
+				<span class="product-category">{{agencie.direccion}}</span>
+			</div>
+			<div class="product-list-action">
+                <button pButton pRipple type="button" icon="pi pi-star-fill" class="p-button-text"></button>
+                
+			</div>
+		</div>
+	</ng-template>
+    <ng-template pTemplate="footer">Footer Content</ng-template>
+</p-virtualScroller>
+<!-- <p-table [value]="products" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Quantity</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+        <tr>
+            <td>{{product.code}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.category}}</td>
+            <td>{{product.quantity}}</td>
+        </tr>
+    </ng-template>
+</p-table> -->
