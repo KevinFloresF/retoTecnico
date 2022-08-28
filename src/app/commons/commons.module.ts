@@ -14,7 +14,8 @@ import { ButtonModule } from 'primeng/button';
 
   ],
   imports: [
-    ButtonModule
+    ButtonModule,
+    CommonModule
     
   ],
   exports: [   

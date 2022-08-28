@@ -1,45 +1,99 @@
 
-
-
-<p-virtualScroller [value]="agencies" scrollHeight="500px" [itemSize]="100" >
-	
-    <ng-template pTemplate="header">
-		<app-header></app-header>
-	</ng-template>
-
+<p-virtualScroller [value]="agenciesList" scrollHeight="600px" [itemSize]="100" >
+	     
 	<ng-template let-agencie pTemplate="item" >
         
-		<div class="product-item">
-            <div><img src="assets/img/agencie1.svg"></div>
-			<div class="product-list-detail">    
+		<div class="agency-item">
+            <div><img src="{{agencie.img}}"></div>
+			<div class="agency-list-detail" (click)="showAgencyRow(agencie)" style="cursor: pointer;">    
                 <label class="agency" style="display: flex;">{{agencie.agencia}}</label>    
                 <label class="province"style="display: flex;">{{agencie.provincia}}</label>
-				<i class="pi pi-map-marker product-category-icon"></i>
-				<span class="product-category">{{agencie.direccion}}</span>
+				<i class="pi pi-map-marker agency-category-icon"></i>
+				<span  class="agency-category">{{agencie.direccion}}</span>
 			</div>
-			<div class="product-list-action">
-                <button pButton pRipple type="button" icon="pi pi-star-fill" class="p-button-text"></button>
-                
+			<div class="agency-list-action">
+             <button class="btn-favorite"
+                    (click)="OnFavorite(agencie)" >
+                <i [ngClass]="{'pi-star-fill':agencie.favorite,'pi-star': !agencie.favorite}" class="pi"></i>
+            </button>
 			</div>
-		</div>
+		</div>    
 	</ng-template>
-    <ng-template pTemplate="footer">Footer Content</ng-template>
+
+ 
+    <ng-template pTemplate="footer">
+		 <div class="btn-add" (click)="OnCreateAgency()">
+      <label for="btn-add" class="btn-add pi pi-plus" ></label>
+    </div>
+	</ng-template> 
+	
 </p-virtualScroller>
-<!-- <p-table [value]="products" responsiveLayout="scroll">
-    <ng-template pTemplate="header">
-        <tr>
-            <th>Code</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Quantity</th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-product>
-        <tr>
-            <td>{{product.code}}</td>
-            <td>{{product.name}}</td>
-            <td>{{product.category}}</td>
-            <td>{{product.quantity}}</td>
-        </tr>
-    </ng-template>
-</p-table> -->
+
+
+<!-- Init SideBar -->
+<p-sidebar [(visible)]="showSidebar" position="right" [transitionOptions]="'250ms'" [style]="{width:'380px'}" [showCloseIcon]="false">
+	
+	<div class="p-sidebar-header-content"> Detalle de Agencia</div>
+
+<form class="form-font" [formGroup]="formulario"  (ngSubmit)="onSubmit()">   
+    <div class="form">
+         <input type="text" formControlName="agencia" required>    
+         <label class="lbl">
+           <span class="text-nomb">
+               Nombre de Agencia
+           </span>
+     </label>
+    </div>
+    <div class="form">
+        <input type="text" formControlName="direccion" required>    
+        <label class="lbl">
+          <span class="text-nomb">
+              Direccion
+          </span>
+    </label>
+   </div>
+   <div class="form">
+      <input type="text" formControlName="distrito" required>    
+      <label class="lbl">
+        <span class="text-nomb">
+			Distrito
+        </span>
+        </label>
+    </div>
+    <div class="form">
+      <input type="text" formControlName="provincia" required>    
+      <label class="lbl">
+        <span class="text-nomb">
+			Provincia
+        </span>
+        </label>
+    </div>
+    <div class="form">
+        <input type="text" formControlName="lat" required>    
+        <label class="lbl">
+          <span class="text-nomb">
+              Latitud
+          </span>
+          </label>
+      </div>
+
+      <div class="form">
+        <input type="text" formControlName="lon" required>    
+        <label class="lbl">
+          <span class="text-nomb">
+              Longitud
+          </span>
+          </label>
+      </div>
+
+<div style="margin-top: 30px; margin-bottom: 20px;">
+  <p-gmap [options]="options" [style]="{'width':'100%','height':'200px'}"></p-gmap>
+</div> 
+<div style="display:flex; justify-content:center; align-items:center">
+    <input *ngIf="isActualizar" type="submit" value="Actualizar" class="input-btn" />
+   <input *ngIf="!isActualizar" type="submit" value="Registrar" class="input-btn" />
+  
+</div> 
+</form> 
+</p-sidebar>
+  <!-- Fin SideBar -->

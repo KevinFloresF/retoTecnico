@@ -6,6 +6,9 @@ export class Agencie{
     direccion: string;
     lat: number;
     lon: number;
+    favorite?: boolean;
+    id?: number;
+    img?:any
 
     constructor(
         pAgencia: string,

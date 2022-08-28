@@ -10,11 +10,20 @@ export class AgenciesBackend implements AgenciesService{
     constructor(
         private http: HttpClient,
     ){}
-
+    get getRefreshAgencyTable$() {
+		return ;
+	}
+    
+    addFavorite(): Observable<any> {
+        throw new Error("Method not implemented.");
+    }
     getAgenciesList(): Observable<any> {
         throw new Error("Method not implemented.");
     }
-    updateAgencie(): Observable<any> {
+    updateAgencie(agencyRequest:any): Observable<any> {
+        throw new Error("Method not implemented.");
+    }
+    addNewAgency(agencyRequest:any): Observable<any> {
         throw new Error("Method not implemented.");
     }
 }

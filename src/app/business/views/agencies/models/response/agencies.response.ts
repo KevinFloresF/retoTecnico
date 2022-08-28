@@ -5,10 +5,9 @@ export interface AgenciesResponse{
     departamento: string,
     direccion: string,
     lat: number,
-    lon: number
-
+    lon: number,
 }
-export interface IAgencies {
+export interface AgenciesList {
     agencia: string,
     distrito: string,
     provincia: string,
@@ -46,7 +45,7 @@ class Agency {
 }
 
 export class Agencies {
-    agency: IAgencies[];
+    agency: AgenciesList[];
 
     constructor(agencies: AgenciesResponse[]) {
         this.agency = agencies.map((a, index) => new Agency(a, index))
